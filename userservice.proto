@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option go_package="usergrpc/userservice";
+
+service UserService {
+    rpc GetUserById (GetUserRequest) returns (UserResponse);
+    rpc GetUsersByIds (GetUsersRequest) returns (UsersResponse);
+}
+
+message GetUserRequest {
+    int64 id = 1;
+}
+
+message GetUsersRequest {
+    repeated int64 ids = 1;
+}
+
+message UserResponse {
+    int64 id = 1;
+    string fname = 2;
+    string city = 3;
+    string phone = 4;
+    float height = 5;
+    bool Married = 6;
+}
+
+message UsersResponse {
+    repeated UserResponse users = 1;
+}
